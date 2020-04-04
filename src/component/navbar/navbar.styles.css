@@ -1,0 +1,30 @@
+.navbar{
+	position: fixed; /* Set the navbar to fixed position */
+  top: 0;
+	width: 100%;
+}
+.nav-container {
+	height: 8vh;
+	display: flex;
+	flex-flow: wrap;
+	justify-content: space-between;
+	align-item: center;
+	background-color: rgba(0,0,255,0.1);
+}
+.nav-items {
+	flex-basis: 80%;
+	display: flex;
+	flex-flow: wrap;
+	justify-content: space-around;
+	align-item: center;
+}
+.nav-item, .nav-title, .nav-git {
+	margin: auto ;
+}
+.nav-link {
+	color: white;
+	text-decoration: none;
+}
+.nav-link:hover {
+	color: black;
+}
