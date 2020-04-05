@@ -5,7 +5,7 @@ import './footer.styles.css';
 const Footer = (props) => {
 	
 	return (
-		<div class='footer'>
+		<div className='footer'>
 			<span>footer</span>
 		</div>
 	)

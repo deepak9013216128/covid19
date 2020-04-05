@@ -1,15 +1,18 @@
-.navbar{
-	position: fixed; /* Set the navbar to fixed position */
-  top: 0;
-	width: 100%;
+ .navbar{
+	background-color: blue;
+	opacity: 0.8;
 }
+.navbar a{
+	text-decoration: none;
+}
+/*
 .nav-container {
 	height: 8vh;
 	display: flex;
 	flex-flow: wrap;
 	justify-content: space-between;
 	align-item: center;
-	background-color: rgba(0,0,255,0.1);
+	background-color: rgba(0,100,255,0.7);
 }
 .nav-items {
 	flex-basis: 80%;
@@ -27,4 +30,4 @@
 }
 .nav-link:hover {
 	color: black;
-}
+} */
