@@ -3,7 +3,6 @@ import {Route,Switch} from 'react-router-dom';
 
 import './App.css';
 
-import World from './pages/world/world.component';
 import Country from './pages/country/country.component';
 import Contact from './pages/contact/contact.component';
 import HomePage from './pages/homepage/homepage.component';
@@ -25,13 +24,12 @@ class App extends React.Component {
 		.catch(error =>console.log(error))
 	}
 	render(){
-		console.log(this.state.summary)
+		// console.log(this.state.summary)
 		return (
 			<div className="App">
 				<Switch>
 					<Route exact path='/' render={()=> <HomePage {...this.state.summary} /> } />
-					<Route exact path='/country' render={()=> <Country /> } />
-					<Route exact path='/world' render={()=> <World /> } />
+					<Route exact path='/country' render={()=> <Country {...this.state.summary}/> } />
 					<Route exact path='/Contact' render={()=> <Contact /> } />
 				</Switch>
 			</div>

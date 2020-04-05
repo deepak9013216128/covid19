@@ -11,11 +11,6 @@ import Footer from '../../component/footer/footer.component';
 class HomePage extends React.Component {
 	
 	render(){
-		// {Global && (<div>
-		// 				<h1>Total Confirmed</h1>
-		// 				<h1>{Global.TotalConfirmed}</h1>
-		// 				</div>)
-		// 			}
 		const {Global} = this.props;
 		return (
 			<div className='homepage'>

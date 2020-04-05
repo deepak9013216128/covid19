@@ -17,10 +17,10 @@ const Navbar = (props) => {
 						<Link to='/' className='nav-link text-white'>Home</Link>
 					</li>
 					<li className="nav-item">
-						<Link to='/country' className='nav-link text-white-50'>India</Link>
+						<Link to='/country' className='nav-link text-white-50'>World</Link>
 					</li>
 					<li className="nav-item">
-						<Link to='/world' className='nav-link text-white-50'>World</Link>
+						<Link to='/' className='nav-link text-white-50'>India</Link>
 					</li>
 					<li className="nav-item">
 						<Link to='/contact' className='nav-link text-white-50'>Contact</Link>
