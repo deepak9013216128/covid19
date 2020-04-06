@@ -1,65 +1,120 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+import './country.styles.css';
+
 import Navbar from '../../component/navbar/navbar.component';
 import Footer from '../../component/footer/footer.component';
 
 class Country extends React.Component {
-	render(){
+	state ={
+		currentPage: 1,
+		compareIndex: 2,
+		tableHeading: [
+			'country',
+			'cases',
+			'deaths',
+			'recovered',
+			'todayCases',
+			'todayDeaths',
+			'deathsPerOneMillion'
+		]
+	}
+	handleCurrentPage = (event) => {
+		const {currentPage} = this.state;
+		if(currentPage+event.target.value > 0 && currentPage+event.target.value <22){
+			this.setState({currentPage: currentPage+event.target.value})
+		}
+	}
+	compare = (a,b) => {
+		const {compareIndex,tableHeading} = this.state;
+		return b[tableHeading[compareIndex]] - a[tableHeading[compareIndex]] ;
+	}
+	handleCompareIndex = (idx) => {
+		this.setState({compareIndex: idx})
+	}
+	handleCounrty = (country) => {
+		console.log(country)
+	}
 		
-		const {Countries} = this.props;
-	  const tableHeading = [
-			'Country',
-			'TotalConfirmed',
-			'TotalDeaths',
-			'TotalRecovered',
-			'NewDeaths',
-			'NewRecovered',
-			'NewConfirmed'
-		];
+	render(){
+		const {currentPage,tableHeading} = this.state;
+		const {countries} = this.props;
 		let tableBody;
-		if( Countries){
-			Countries.sort((a, b) => b.TotalDeaths - a.TotalDeaths );
-			tableBody = Countries.filter((country,idx)=> idx <12).map((country,idx) => (
-				<tr key={uuidv4()} className={`${idx%2 ? 'table-dark' : 'table-light'}`} >
-					{tableHeading.map(title => <td key={uuidv4()}>{country[title]}</td>)}
+		if( countries.length>0){
+			countries.sort(this.compare);
+			tableBody = countries
+				.filter((country,idx)=> idx <12*currentPage && idx>=12*(currentPage-1) )
+				.map((country,idx) => (
+				<tr 
+					key={uuidv4()} 
+					className={`${idx%2 ? 'table-dark' : 'table-light'}`}
+					onClick={() => this.handleCounrty(country)}
+				>
+					<th scope="col">{(idx+1)+ 12*(currentPage-1)}</th>
+					{
+						tableHeading.map((title,idx) => 
+							<td key={uuidv4()} >{country[title]}</td>
+						)
+					}
 				</tr>
 			))
 		}
 
 		return (
-			<div>
+			<div className='country'>
 				<Navbar />
 				<h1>Country Page</h1>
-				<table className="table">
-					<thead>
-						<tr className="table-info">
-							{
-								tableHeading.map((title,idx) => <th key={idx} scope='col'>{title}</th>)
-							}
-						</tr>
-					</thead>
-					<tbody>
-						{tableBody}
-					</tbody>
-				</table>
-				<nav aria-label="Page navigation example">
-					<ul class="pagination">
-						<li class="page-item">
-							<a class="page-link" href="#" aria-label="Previous">
-								<span aria-hidden="true">&laquo;</span>
-							</a>
-						</li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item">
-							<a class="page-link" href="#" aria-label="Next">
-								<span aria-hidden="true">&raquo;</span>
-							</a>
-						</li>
-					</ul>
-				</nav>
+				<div className='table-content'>
+					<table className="table">
+						<thead>
+							<tr className="table-info">
+								<th scope="col">S No.</th>
+								{
+									tableHeading.map((title,idx) => 
+										<th key={idx}onClick={() => this.handleCompareIndex(idx)} scope='col'>
+											<span className='table-heading'>{`${title[0].toUpperCase()}${title.slice(1)}`}</span>
+										</th>
+									)
+								}
+							</tr>
+						</thead>
+						<tbody>
+							{tableBody}
+						</tbody>
+					</table>
+				</div>
+				<div className='page'>
+					<nav aria-label="Page navigation example">
+						<ul className="pagination">
+							<li 
+								className="page-item page-link page-active" 
+								onClick={this.handleCurrentPage} 
+								value='-1'
+							>&laquo;</li>
+							<li 
+								className="page-item page-link bg-secondary border-secondary" 
+								onClick={this.handleCurrentPage} 
+								value='0'
+							>{currentPage}</li>
+							<li 
+								className="page-item page-link" 
+								onClick={this.handleCurrentPage} 
+								value='1'
+							>{currentPage+1}</li>
+							<li 
+								className="page-item page-link" 
+								onClick={this.handleCurrentPage} 
+								value='2'
+							>{currentPage+2}</li>
+							<li 
+								className="page-item page-link" 
+								onClick={this.handleCurrentPage} 
+								value='3'
+							>&raquo;</li>
+						</ul>
+					</nav>
+				</div>
 				<Footer />
 			</div>
 		)

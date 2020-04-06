@@ -1,0 +1,13 @@
+.country {
+}
+.table-content {
+	width: 100%;
+	overflow: auto;
+}
+.table-heading, .page-link {
+	cursor: pointer;
+}
+.page {
+	width: 100px;
+	margin-left: 2rem;
+}

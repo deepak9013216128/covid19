@@ -11,97 +11,85 @@ import Footer from '../../component/footer/footer.component';
 class HomePage extends React.Component {
 	
 	render(){
-		const {Global} = this.props;
+		const {covid19} = this.props;
 		return (
 			<div className='homepage'>
 				<Navbar />
 				<div className='homepage-container'>
 					
-					<div class="jumbotron">
+					<div className="jumbotron">
 						<h1 className='display-5'>Stay Safe  at Home</h1>
 						<h3 >{corona.spreads}</h3>
-						<hr class="my-4" />
-						<h4 class="lead">{corona.title}</h4>
+						<hr className="my-4" />
+						<h4 className="lead">{corona.title}</h4>
 					</div>
 					<div className='current-data'>
-						<div class='card'>
-							{
-								Global && (
-									<div class="card-body">
-										<h5 class="card-title">Total Confirmed</h5>
-										<p class="card-text">{Global.TotalConfirmed}</p>
-									</div>
-								)
-							}
+						<div className='card'>
+							<div className="card-body">
+								<h5 className="card-title">Total Confirmed Case</h5>
+								{
+									covid19 && (<p className="card-text">{covid19.cases}</p>)
+								}
+							</div>
 						</div>
-						<div class='card'>
-							{
-								Global && (
-									<div class="card-body">
-										<h5 class="card-title">Total Deaths</h5>
-										<p class="card-text">{Global.TotalDeaths}</p>
-									</div>
-								)
-							}
+						<div className='card'>
+							<div className="card-body">
+								<h5 className="card-title">Total Deaths</h5>
+								{
+									covid19 && (<p className="card-text">{covid19.deaths}</p>)
+								}
+							</div>
 						</div>
-						<div class='card'>
-							{
-								Global && (
-									<div class="card-body">
-										<h5 class="card-title">Total Recovered</h5>
-										<p class="card-text">{Global.TotalRecovered}</p>
-									</div>
-								)
-							}
+						<div className='card'>
+							<div className="card-body">
+								<h5 className="card-title">Total Recovered</h5>
+								{
+									covid19 && (<p className="card-text">{covid19.recovered}</p>)
+								}
+							</div>
 						</div>
-						<div class='card'>
-							{
-								Global && (
-									<div class="card-body">
-										<h5 class="card-title">New Confirmed</h5>
-										<p class="card-text">{Global.NewConfirmed}</p>
-									</div>
-								)
-							}
+						<div className='card'>
+							<div className="card-body">
+								<h5 className="card-title">Today Cases</h5>
+								{
+									covid19 && (<p className="card-text">{covid19.todayCases}</p>)
+								}
+							</div>
 						</div>
-						<div class='card'>
-							{
-								Global && (
-									<div class="card-body">
-										<h5 class="card-title">New Deaths</h5>
-										<p class="card-text">{Global.NewDeaths}</p>
-									</div>
-								)
-							}
+						<div className='card'>
+							<div className="card-body">
+								<h5 className="card-title">Today Deaths</h5>
+								{
+									covid19 && (<p className="card-text">{covid19.todayDeaths}</p>)
+								}
+							</div>
 						</div>
-						<div class='card'>
-							{
-								Global && (
-									<div class="card-body">
-										<h5 class="card-title">New Recovered</h5>
-										<p class="card-text">{Global.NewRecovered}</p>
-									</div>
-								)
-							}
+						<div className='card'>
+							<div className="card-body">
+								<h5 className="card-title">Deaths Per One Million</h5>
+								{
+									covid19 && (<p className="card-text">{covid19.deathsPerOneMillion}</p>)
+								}
+							</div>
 						</div>
 					</div>
 				</div>
 				<div className='homepage-body'>
-					<div class="card" >
-						<img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" class="card-img-top" alt="..." />
-						<div class="card-body">
-							<h3 class="card-title">Symptoms</h3>
+					<div className="card" >
+						<img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" className="card-img-top" alt="..." />
+						<div className="card-body">
+							<h3 className="card-title">Symptoms</h3>
 							<h5>{corona.symptoms.title}</h5>
-							<p class="card-text">People may experience:</p>
+							<p className="card-text">People may experience:</p>
 							<ul>
 								{corona.symptoms.options.map(option => <li key={uuidv4()} >{option}</li>)}
 							</ul>
 						</div>
 					</div>
-					<div class="card" >
-						<img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" class="card-img-top" alt="..." />
-						<div class="card-body">
-							<h3 class="card-title">Preventions</h3>
+					<div className="card" >
+						<img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" className="card-img-top" alt="..." />
+						<div className="card-body">
+							<h3 className="card-title">Preventions</h3>
 							<h5>{corona.preventions.title}</h5>
 							<p>Do</p>
 							<ul>{corona.preventions.do.map(li => <li key={uuidv4()}>{li}</li>)}</ul>
@@ -109,10 +97,10 @@ class HomePage extends React.Component {
 							<ul>{corona.preventions.donot.map(dont => <li key={uuidv4()}>{dont}</li>)}</ul>
 						</div>
 					</div>
-					<div class="card" >
-						<img src="https://images.unsplash.com/photo-1584467735871-8e85353a8413?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" class="card-img-top" alt="..." />
-						<div class="card-body">
-							<h3 class="card-title">Treatment</h3>
+					<div className="card" >
+						<img src="https://images.unsplash.com/photo-1584467735871-8e85353a8413?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" className="card-img-top" alt="..." />
+						<div className="card-body">
+							<h3 className="card-title">Treatment</h3>
 							<h5>{corona.treatment.title}</h5>
 							<p>{corona.treatment.selfCare.title}</p>
 							<ul>{corona.treatment.selfCare.options.map(option => <li key={uuidv4()}>{option}</li>)}</ul>

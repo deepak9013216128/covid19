@@ -1,6 +1,6 @@
 import React from 'react';
 
-class World extends React.Component {
+class SingleCountryPage extends React.Component {
 	render(){
 		return (
 			<div>
@@ -10,4 +10,4 @@ class World extends React.Component {
 	}
 };
 
-export default World;
+export default SingleCountryPage;
