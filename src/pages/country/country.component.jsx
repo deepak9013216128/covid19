@@ -1,5 +1,6 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import {withRouter} from 'react-router-dom';
 
 import './country.styles.css';
 
@@ -34,7 +35,8 @@ class Country extends React.Component {
 		this.setState({compareIndex: idx})
 	}
 	handleCounrty = (country) => {
-		console.log(country)
+		// console.log(country)
+		this.props.history.push(`/country/${country.country}`)
 	}
 		
 	render(){
@@ -121,4 +123,4 @@ class Country extends React.Component {
 	}
 };
 
-export default Country;
+export default withRouter(Country);

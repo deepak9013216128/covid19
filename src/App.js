@@ -19,21 +19,15 @@ class App extends React.Component {
 	}
 	
 	componentDidMount = async () => {
-		// fetch(API_URL)
-		// 	.then(response => response.json())
-		// 	.then(allUrl => `${allUrl.summaryRoute.Path}`.slice(1))
-		// 	.then(summaryUrl => fetch(`${API_URL}${summaryUrl}`))
-		// 	.then(response => response.json())
-		// 	.then(summary => this.setState({summary: summary}))
-		// 	.catch(error =>console.log(error))
-		fetch(API_URL)
-			.then(response => response.json())
-			.then(covid19 => this.setState({covid19: covid19}))
-			.catch(error =>console.log(error))
-		fetch(API_URL2)
-			.then(response => response.json())
-			.then(countries => this.setState({countries: countries}))
-			.catch(error =>console.log(error))
+		Promise.all([
+				fetch(API_URL),
+				fetch(API_URL2)
+			])
+			.then( ([responseCovid19,responseCountries]) =>
+				Promise.all([
+					responseCovid19.json(),responseCountries.json()
+				]))
+			.then(([covid19,countries]) => this.setState({covid19,countries}) )
 	}
 	render(){
 		const {covid19,countries} = this.state;
