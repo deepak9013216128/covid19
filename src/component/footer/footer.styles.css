@@ -1,6 +1,6 @@
 .footer {
+	margin-top: 5px;
 	text-align: center;
 	height: 20vh;
-	background-color: white;
-	
+	min-width: 360px;
 }

@@ -3,6 +3,9 @@ import {Route,Switch} from 'react-router-dom';
 
 import './App.css';
 
+import Navbar from './component/navbar/navbar.component';
+import Footer from './component/footer/footer.component';
+
 import Country from './pages/country/country.component';
 import Contact from './pages/contact/contact.component';
 import HomePage from './pages/homepage/homepage.component';
@@ -33,16 +36,20 @@ class App extends React.Component {
 		const {covid19,countries} = this.state;
 		return (
 			<div className="App">
-				<Switch>
-					<Route exact path='/' render={()=> <HomePage covid19={covid19} /> } />
-					<Route exact path='/country' render={()=> <Country countries={countries}/> } />
-					<Route 
-						exact 
-						path='/country/:countryName' 
-						render={(routeProps)=> <SingleCountryPage {...routeProps}/>} 
-					/>
-					<Route exact path='/Contact' render={()=> <Contact /> } />
-				</Switch>
+				<Navbar />
+				<div className='app-container' >
+					<Switch>
+						<Route exact path='/' render={()=> <HomePage covid19={covid19} /> } />
+						<Route exact path='/country' render={()=> <Country countries={countries}/> } />
+						<Route 
+							exact 
+							path='/country/:countryName' 
+							render={(routeProps)=> <SingleCountryPage {...routeProps}/>} 
+						/>
+						<Route exact path='/Contact' render={()=> <Contact /> } />
+					</Switch>
+				</div>
+				<Footer />
 			</div>
 		);
 	}

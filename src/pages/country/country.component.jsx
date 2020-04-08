@@ -4,9 +4,6 @@ import {withRouter} from 'react-router-dom';
 
 import './country.styles.css';
 
-import Navbar from '../../component/navbar/navbar.component';
-import Footer from '../../component/footer/footer.component';
-
 class Country extends React.Component {
 	state ={
 		currentPage: 1,
@@ -23,7 +20,9 @@ class Country extends React.Component {
 	}
 	handleCurrentPage = (event) => {
 		const {currentPage} = this.state;
-		if(currentPage+event.target.value > 0 && currentPage+event.target.value <22){
+		const {countries} = this.props;
+		const {value} = event.target;
+		if(currentPage+value > 0 && currentPage+value <= Math.floor(countries.length/12)+1){
 			this.setState({currentPage: currentPage+event.target.value})
 		}
 	}
@@ -35,7 +34,6 @@ class Country extends React.Component {
 		this.setState({compareIndex: idx})
 	}
 	handleCounrty = (country) => {
-		// console.log(country)
 		this.props.history.push(`/country/${country.country}`)
 	}
 		
@@ -51,12 +49,17 @@ class Country extends React.Component {
 				<tr 
 					key={uuidv4()} 
 					className={`${idx%2 ? 'table-dark' : 'table-light'}`}
-					onClick={() => this.handleCounrty(country)}
+					
 				>
 					<th scope="col">{(idx+1)+ 12*(currentPage-1)}</th>
 					{
 						tableHeading.map((title,idx) => 
-							<td key={uuidv4()} >{country[title]}</td>
+							<td className={`${country[title]?title:''}`} key={uuidv4()} >
+								{!idx && (<span><img src={country.countryInfo.flag} style={{width: '30px'}} /></span>)}
+								<span 
+									className={`${!idx && 'cell'}`} 
+									onClick={() => !idx && this.handleCounrty(country)}>  {country[title]}</span>
+							</td>
 						)
 					}
 				</tr>
@@ -65,8 +68,6 @@ class Country extends React.Component {
 
 		return (
 			<div className='country'>
-				<Navbar />
-				<h1>Country Page</h1>
 				<div className='table-content'>
 					<table className="table">
 						<thead>
@@ -74,8 +75,15 @@ class Country extends React.Component {
 								<th scope="col">S No.</th>
 								{
 									tableHeading.map((title,idx) => 
-										<th key={idx}onClick={() => this.handleCompareIndex(idx)} scope='col'>
-											<span className='table-heading'>{`${title[0].toUpperCase()}${title.slice(1)}`}</span>
+										<th 
+											className='cell-column' 
+											key={idx} 
+											onClick={() => this.handleCompareIndex(idx)} 
+											scope='col'
+										>
+											<span >
+												{`${title[0].toUpperCase()}${title.slice(1)}`}
+											</span>
 										</th>
 									)
 								}
@@ -117,7 +125,6 @@ class Country extends React.Component {
 						</ul>
 					</nav>
 				</div>
-				<Footer />
 			</div>
 		)
 	}

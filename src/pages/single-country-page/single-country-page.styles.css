@@ -1,3 +1,7 @@
 .single-page-container {
-	margin-top: 3.5rem;
+	margin: 0;
+	display: flex;
+	flex-flow: wrap;
+	justify-content: space-around;
+	align-items: center;
 }

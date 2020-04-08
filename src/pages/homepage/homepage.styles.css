@@ -1,22 +1,21 @@
 .homepage {
 	background-color: #f1f1f1;
-	margin-top: 40px;
-}
-.homepage-container {
-	
 }
 .homepage-body {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
-	align-item: center;
+	align-items: center;
 }
 .homepage-body img{
 	height: 200px;
 }
-.card {
+.content {
 	width: 30%;
-	min-width: 350px;
+	min-width: 360px;
+	min-height: 700px;
+	/* border-radius: 1rem; */
+	overflow: auto;
 }
 .current-data {
 	display: flex;
@@ -33,13 +32,15 @@ h1 {
 	font-style: italic;
 }
 
-/* h2, h1 {
-	
-}
+
+
 h3, h4 {
+	font-style: italic;
 	font-family: 'Open Sans', sans-serif; 
+	font-weight: 900;
+	
 }
  li {
 	font-family: 'Roboto', sans-serif;
 	font-style: italic;
-} */
+} 

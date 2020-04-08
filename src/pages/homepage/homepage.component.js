@@ -5,8 +5,7 @@ import './homepage.styles.css'
 
 import corona from '../../seedText';
 
-import Navbar from '../../component/navbar/navbar.component';
-import Footer from '../../component/footer/footer.component';
+import Card from '../../component/card/card.component';
 
 class HomePage extends React.Component {
 	
@@ -14,7 +13,6 @@ class HomePage extends React.Component {
 		const {covid19} = this.props;
 		return (
 			<div className='homepage'>
-				<Navbar />
 				<div className='homepage-container'>
 					
 					<div className="jumbotron">
@@ -24,58 +22,66 @@ class HomePage extends React.Component {
 						<h4 className="lead">{corona.title}</h4>
 					</div>
 					<div className='current-data'>
-						<div className='card'>
-							<div className="card-body">
-								<h5 className="card-title">Total Confirmed Case</h5>
-								{
-									covid19 && (<p className="card-text">{covid19.cases}</p>)
-								}
-							</div>
-						</div>
-						<div className='card'>
-							<div className="card-body">
-								<h5 className="card-title">Total Deaths</h5>
-								{
-									covid19 && (<p className="card-text">{covid19.deaths}</p>)
-								}
-							</div>
-						</div>
-						<div className='card'>
-							<div className="card-body">
-								<h5 className="card-title">Total Recovered</h5>
-								{
-									covid19 && (<p className="card-text">{covid19.recovered}</p>)
-								}
-							</div>
-						</div>
-						<div className='card'>
-							<div className="card-body">
-								<h5 className="card-title">Today Cases</h5>
-								{
-									covid19 && (<p className="card-text">{covid19.todayCases}</p>)
-								}
-							</div>
-						</div>
-						<div className='card'>
-							<div className="card-body">
-								<h5 className="card-title">Today Deaths</h5>
-								{
-									covid19 && (<p className="card-text">{covid19.todayDeaths}</p>)
-								}
-							</div>
-						</div>
-						<div className='card'>
-							<div className="card-body">
-								<h5 className="card-title">Deaths Per One Million</h5>
-								{
-									covid19 && (<p className="card-text">{covid19.deathsPerOneMillion}</p>)
-								}
-							</div>
-						</div>
+						<Card 
+							key={uuidv4()} 
+							property='Total Confirmed Case' 
+							color='primary' 
+							idx={0}
+							value={covid19.cases} 
+						/>
+						<Card 
+							key={uuidv4()} 
+							property='Total Deaths' 
+							color='danger' 
+							idx={1}
+							value={covid19.deaths} 
+						/>
+						<Card 
+							key={uuidv4()} 
+							property='Total Recovered' 
+							color='success' 
+							idx={2}
+							value={covid19.recovered} 
+						/>
+						<Card 
+							key={uuidv4()} 
+							property='Today Cases' 
+							color='primary' 
+							idx={3}
+							value={covid19.todayCases} 
+						/>
+						<Card 
+							key={uuidv4()} 
+							property='Today Deaths' 
+							color='danger' 
+							idx={4}
+							value={covid19.todayDeaths} 
+						/>
+						<Card 
+							key={uuidv4()} 
+							property='Deaths Per One Million' 
+							color='danger' 
+							idx={5}
+							value={covid19.deathsPerOneMillion} 
+						/>
+						<Card 
+							key={uuidv4()} 
+							property='Cases Per One Million' 
+							color='warning' 
+							idx={6}
+							value={covid19.casesPerOneMillion} 
+						/>
+						<Card 
+							key={uuidv4()} 
+							property='Affected Countries' 
+							color='warning' 
+							idx={7}
+							value={covid19.affectedCountries} 
+						/>
 					</div>
 				</div>
 				<div className='homepage-body'>
-					<div className="card" >
+					<div className="card content" >
 						<img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" className="card-img-top" alt="..." />
 						<div className="card-body">
 							<h3 className="card-title">Symptoms</h3>
@@ -86,7 +92,7 @@ class HomePage extends React.Component {
 							</ul>
 						</div>
 					</div>
-					<div className="card" >
+					<div className="card content" >
 						<img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" className="card-img-top" alt="..." />
 						<div className="card-body">
 							<h3 className="card-title">Preventions</h3>
@@ -97,20 +103,19 @@ class HomePage extends React.Component {
 							<ul>{corona.preventions.donot.map(dont => <li key={uuidv4()}>{dont}</li>)}</ul>
 						</div>
 					</div>
-					<div className="card" >
+					<div className="card content" >
 						<img src="https://images.unsplash.com/photo-1584467735871-8e85353a8413?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" className="card-img-top" alt="..." />
 						<div className="card-body">
 							<h3 className="card-title">Treatment</h3>
 							<h5>{corona.treatment.title}</h5>
 							<p>{corona.treatment.selfCare.title}</p>
 							<ul>{corona.treatment.selfCare.options.map(option => <li key={uuidv4()}>{option}</li>)}</ul>
-							<div className='medical-treatment'>
+							<div className='#ffcc80 orange lighten-5'>
 								<h3>{corona.treatment.medicalTreatment}</h3>
 							</div>
 						</div>
 					</div>
 				</div>
-				<Footer />
 			</div>
 		)
 	}

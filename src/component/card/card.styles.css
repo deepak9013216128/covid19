@@ -1,0 +1,16 @@
+.box {
+	min-width: 22em;
+	min-height: 7em;
+	margin-top: 5px;
+	height: 80px;
+	text-align: center;
+	item-align: center;
+	justify-content: center;
+	
+}
+.card .card-body .card-text{
+	font-size: 2rem;
+}
+.fa-plus {
+	font-size:1.5rem;
+}

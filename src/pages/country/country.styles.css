@@ -4,10 +4,31 @@
 	width: 100%;
 	overflow: auto;
 }
-.table-heading, .page-link {
+.cell, .page-link {
 	cursor: pointer;
+	color: blue;
+}
+.cell:hover {
+	color: blue;
+	font-weight: 700;
+}
+.cell-column {
+	cursor: pointer;
+	font-weight: 500;
 }
 .page {
 	width: 100px;
 	margin-left: 2rem;
+}
+td.recovered  {
+	color: white;
+	background-color: #6fb551 ;
+}
+td.todayDeaths {
+	color: white;
+	background-color: #ff5252;
+}
+td.todayCases {
+	color: white;
+	background-color: #00bcd4;
 }
