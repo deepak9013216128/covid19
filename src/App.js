@@ -9,11 +9,16 @@ import Footer from './component/footer/footer.component';
 import Country from './pages/country/country.component';
 import Contact from './pages/contact/contact.component';
 import HomePage from './pages/homepage/homepage.component';
+import India from './pages/india/india.component';
 import SingleCountryPage from './pages/single-country-page/single-country-page.component';
 
 // const API_URL = 'https://api.covid19api.com/';
-const API_URL = 'https://corona.lmao.ninja/all';
-const API_URL2 = 'https://corona.lmao.ninja/countries?sort=country';
+// https://corona.lmao.ninja/v2/historical/india TIMELINE COUNTRY
+// https://protected-reaches-03598.herokuapp.com/citydata.json INDIA-STATE-CITY
+// https://protected-reaches-03598.herokuapp.com/historicaldata.json TIMELINE-INDIA
+
+const API_URL = 'https://corona.lmao.ninja/v2/all';
+const API_URL2 = 'https://corona.lmao.ninja/v2/countries?sort=country';
 
 class App extends React.Component {
 	state = {

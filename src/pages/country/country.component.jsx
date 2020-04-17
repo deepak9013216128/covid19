@@ -55,7 +55,15 @@ class Country extends React.Component {
 					{
 						tableHeading.map((title,idx) => 
 							<td className={`${country[title]?title:''}`} key={uuidv4()} >
-								{!idx && (<span><img src={country.countryInfo.flag} style={{width: '30px'}} /></span>)}
+								{
+									!idx && (
+									<span>
+										<img 
+											src={country.countryInfo.flag} 
+											alt={country.country} 
+											style={{width: '30px'}} 
+										/></span>
+								)}
 								<span 
 									className={`${!idx && 'cell'}`} 
 									onClick={() => !idx && this.handleCounrty(country)}>  {country[title]}</span>

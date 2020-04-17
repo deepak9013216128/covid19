@@ -22,7 +22,7 @@ const Navbar = (props) => {
 					
 				</ul>
 				<a href='https://github.com/deepak9013216128/covid19' className='text-white'>gitHub
-					<i class="fab fa-github fa-lg white-text fa-2x"> </i>
+					<i className="fab fa-github fa-lg white-text fa-2x"> </i>
 				</a>
 			</div>
 		</nav>
