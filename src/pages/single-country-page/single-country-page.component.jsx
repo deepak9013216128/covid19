@@ -5,11 +5,11 @@ import './single-country-page.styles.css';
 
 import Card from '../../component/card/card.component';
 import LineChart from '../../component/line-chart/line-chart.component';
-
+import BarChart from '../../component/bar-chart/bar-chart.component';
 
 const API_URL_COUNTRY = 'https://corona.lmao.ninja/v2/countries/';
 const API_URL_COUNTRY_TIMELINE = 'https://corona.lmao.ninja/v2/historical/';
-			//'https://api.thevirustracker.com/free-api?countryTimeline';
+//'https://api.thevirustracker.com/free-api?countryTimeline=';
 
 class SingleCountryPage extends React.Component {
 	state = {
@@ -31,31 +31,37 @@ class SingleCountryPage extends React.Component {
 		]
 	}
 	fetchData = (countryName) => {
-		fetch(`${API_URL_COUNTRY}${countryName}`)
-			.then(response => response.json())
-			.then(country => {
-				this.setState({country,countryName})
-				return fetch(`${API_URL_COUNTRY_TIMELINE}${countryName}/`)
-			})
-			.then(response => response.json())
-			.then(historicalData => this.setState({historicalData}))
-			.catch(error => console.log(error))
+		Promise.all([
+			fetch(`${API_URL_COUNTRY}${countryName}`),
+			fetch(`${API_URL_COUNTRY_TIMELINE}${countryName}/`)
+		])
+		.then(([response1, response2]) => Promise.all([response1.json(), response2.json()]))
+		.then(([country,historicalData]) => this.setState({country,historicalData,countryName}))
+		// fetch(`${API_URL_COUNTRY}${countryName}`)
+		// 	.then(response => response.json())
+		// 	.then(country => {
+		// 		this.setState({country,countryName})
+		// 		return fetch(`${API_URL_COUNTRY_TIMELINE}${countryName}/`)
+		// 	})
+		// 	.then(response => response.json())
+		// 	.then(historicalData => this.setState({historicalData}))
+		.catch(error => console.log(error))
 	}
 	componentDidMount(){
 		const {countryName} = this.props.match.params;
-		console.log('componentDidMount',countryName)
-		let url = `${API_URL_COUNTRY}${countryName}`;
+		// console.log('componentDidMount',countryName)
+		// let url = `${API_URL_COUNTRY}${countryName}`;
 		this.fetchData(countryName);
 	}
 	componentDidUpdate(){
 		const {countryName} = this.props.match.params;
-		console.log('componentDidUpdate',countryName)
+		// console.log('componentDidUpdate',countryName)
 		if(this.state.countryName !== countryName){
 			this.fetchData(countryName)
 		}
 	}
 	render(){
-		const {country,properties,timeline} = this.state;
+		const {country,properties,historicalData} = this.state;
 		return (
 			<div>
 				<div className="jumbotron">
@@ -76,7 +82,8 @@ class SingleCountryPage extends React.Component {
 						)
 				}
 				</div>
-				<LineChart timeline={timeline}/>
+				<LineChart historicalData={historicalData}/>
+				<BarChart historicalData={historicalData} />
 			</div>
 		)
 	}

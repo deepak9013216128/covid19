@@ -33,7 +33,7 @@ class Country extends React.Component {
 	handleCompareIndex = (idx) => {
 		this.setState({compareIndex: idx})
 	}
-	handleCounrty = (country) => {
+	handleCounrty = (country,idx) => {
 		this.props.history.push(`/country/${country.country}`)
 	}
 		
@@ -53,10 +53,10 @@ class Country extends React.Component {
 				>
 					<th scope="col">{(idx+1)+ 12*(currentPage-1)}</th>
 					{
-						tableHeading.map((title,idx) => 
+						tableHeading.map((title,index) => 
 							<td className={`${country[title]?title:''}`} key={uuidv4()} >
 								{
-									!idx && (
+									!index && (
 									<span>
 										<img 
 											src={country.countryInfo.flag} 
@@ -65,8 +65,8 @@ class Country extends React.Component {
 										/></span>
 								)}
 								<span 
-									className={`${!idx && 'cell'}`} 
-									onClick={() => !idx && this.handleCounrty(country)}>  {country[title]}</span>
+									className={`${!index && 'cell'}`} 
+									onClick={() => !index && this.handleCounrty(country,idx)}>  {country[title]}</span>
 							</td>
 						)
 					}
