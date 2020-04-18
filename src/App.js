@@ -9,7 +9,6 @@ import Footer from './component/footer/footer.component';
 import Country from './pages/country/country.component';
 import Contact from './pages/contact/contact.component';
 import HomePage from './pages/homepage/homepage.component';
-import India from './pages/india/india.component';
 import SingleCountryPage from './pages/single-country-page/single-country-page.component';
 
 // const API_URL = 'https://api.covid19api.com/';

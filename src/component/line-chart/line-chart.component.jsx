@@ -67,7 +67,7 @@ class LineChart extends React.Component {
 						type: 'linear',
 						gridLines: {
 							display: true,
-							zeroLineColor: 'rgb(255,255,255)',
+							zeroLineColor: 'rgb(0,0,0)',
 						},
 						ticks: {
 							beginAtZero: true,
@@ -77,7 +77,7 @@ class LineChart extends React.Component {
 					xAxes: [{
 						gridLines: {
 							display: false,
-							zeroLineColor: 'rgb(255,255,255)',
+							zeroLineColor: 'rgb(0,0,0)',
 						}
 					}]
         }
