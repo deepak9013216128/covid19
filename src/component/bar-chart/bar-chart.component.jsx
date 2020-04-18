@@ -2,7 +2,7 @@ import React from "react";
 import Paper from "@material-ui/core/Paper";
 import Chart from 'chart.js';
 
-class LineChart extends React.Component {
+class BarChart extends React.Component {
 	
 	myChart = null;
 
@@ -95,4 +95,4 @@ class LineChart extends React.Component {
 	}
 }
 
-export default LineChart;
+export default BarChart;
