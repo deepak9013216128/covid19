@@ -21,7 +21,7 @@ class Card extends React.Component {
 									<span>
 										{((idx===3||idx===4)&& value !==0 ) && <i className="fas fa-plus" ></i>}	
 									</span>
-									{value}
+									{value.toLocaleString()}
 								</h2>
 							)
 						}

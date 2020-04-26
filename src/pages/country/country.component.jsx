@@ -66,7 +66,10 @@ class Country extends React.Component {
 								)}
 								<span 
 									className={`${!index && 'cell'}`} 
-									onClick={() => !index && this.handleCounrty(country,idx)}>  {country[title]}</span>
+									onClick={() => !index && this.handleCounrty(country,idx)}
+								>
+									{country[title].toLocaleString()}
+								</span>
 							</td>
 						)
 					}

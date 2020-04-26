@@ -9,6 +9,7 @@ import Footer from './component/footer/footer.component';
 import Country from './pages/country/country.component';
 import Contact from './pages/contact/contact.component';
 import HomePage from './pages/homepage/homepage.component';
+import India from './pages/india/india.component';
 import SingleCountryPage from './pages/single-country-page/single-country-page.component';
 
 // const API_URL = 'https://api.covid19api.com/';
@@ -45,6 +46,11 @@ class App extends React.Component {
 					<Switch>
 						<Route exact path='/' render={()=> <HomePage covid19={covid19} /> } />
 						<Route exact path='/country' render={()=> <Country countries={countries}/> } />
+						<Route 
+							exact 
+							path='/country/india' 
+							render={(routeProps)=> <India {...routeProps}/>} 
+						/>
 						<Route 
 							exact 
 							path='/country/:countryName' 
